@@ -36,9 +36,9 @@ message("${PROJECT_NAME} LIBCORO_FEATURE_SSL           = ${LIBCORO_FEATURE_SSL}"
 
 if(LIBCORO_EXTERNAL_DEPENDENCIES)
     if(LIBCORO_FEATURE_NETWORKING)
-        find_package(c-ares CONFIG REQUIRED)
+        find_package(c-ares REQUIRED)
     endif()
-    find_package(tl-expected CONFIG REQUIRED)
+    find_package(tl-expected REQUIRED)
 else()
     if(NOT LIBCORO_BUILD_TESTS)
         # Disable testing in expected
