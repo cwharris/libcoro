@@ -184,6 +184,11 @@ install(EXPORT ${PROJECT_NAME}-targets
   NAMESPACE coro::
   FILE "${PROJECT_NAME}-targets.cmake")
 
+export(EXPORT ${PROJECT_NAME}-targets
+  NAMESPACE coro::
+  FILE "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-targets.cmake"
+)
+
 install(FILES
   "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
   "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
