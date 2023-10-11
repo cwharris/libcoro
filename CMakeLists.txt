@@ -165,6 +165,11 @@ endif()
 set(target1 ${PROJECT_NAME})
 configure_file(libcoro.pc.in libcoro.pc @ONLY)
 
+write_basic_package_version_file(
+  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
+  COMPATIBILITY SameMajorVersion
+  ARCH_INDEPENDENT)
+
 install(TARGETS libcoro
   EXPORT ${PROJECT_NAME}-targets
   INCLUDES DESTINATION "${CMAKE_INSTALL_DATADIR}")
