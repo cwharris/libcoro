@@ -163,6 +163,19 @@ endif()
 set(target1 ${PROJECT_NAME})
 configure_file(libcoro.pc.in libcoro.pc @ONLY)
 
-install(TARGETS libcoro)
+install(TARGETS libcoro
+  EXPORT ${PROJECT_NAME}-targets
+  INCLUDES DESTINATION "${CMAKE_INSTALL_DATADIR}")
+
+install(EXPORT ${PROJECT_NAME}-targets
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}"
+  NAMESPACE coro::
+  FILE "${PROJECT_NAME}-targets.cmake")
+
+install(FILES
+  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake"
+  "${PROJECT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}")
+
 install(DIRECTORY include/coro TYPE INCLUDE)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libcoro.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
