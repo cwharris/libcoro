@@ -113,7 +113,9 @@ endif()
 add_library(${PROJECT_NAME} STATIC ${LIBCORO_SOURCE_FILES})
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX PREFIX "")
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
-target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_include_directories(${PROJECT_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
 if(LIBCORO_FEATURE_THREADING)
     target_link_libraries(${PROJECT_NAME} PUBLIC pthread tl::expected)
     target_compile_definitions(${PROJECT_NAME} PUBLIC LIBCORO_FEATURE_THREADING)
